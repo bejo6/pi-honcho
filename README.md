@@ -72,6 +72,7 @@ Identity and connection live at the root; behavior lives in `hosts.pi`:
       "sessionPeerPrefix": true,
       "sessionPrefix": "",             // literal prefix on every generated name
       "sessions": { "/path/to/repo": "pinned-session-name" },
+      "guiBase": "",                 // optional GUI base URL for the dashboard link; empty = no dashboard line
       "injection": {
         "sessionStart": ["directives", "summary", "peerCard"],
         "perTurn": ["userContext", "dialectic"],
