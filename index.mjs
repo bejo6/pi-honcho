@@ -132,6 +132,7 @@ function text(result) {
 function statusText(c, cwd = process.cwd()) {
   const name = new Gateway(c).currentSessionName(cwd);
   const status = readStatus();
+  const dashboard = sessionUrl(c.workspace, name, c.baseUrl);
   const lines = [
     `pi-honcho ${PLUGIN_VERSION}`,
     `enabled: ${c.enabled ? "yes" : "no (config.enabled)"}`,
@@ -139,8 +140,9 @@ function statusText(c, cwd = process.cwd()) {
     `api key: ${c.apiKey ? "configured" : "MISSING — set HONCHO_API_KEY or auth.apiKey in the config"}`,
     `peer: ${c.peerName} · ai peer: ${c.aiPeer} · mode: ${c.observationMode}`,
     `workspace: ${c.workspace}`,
+    `server: ${c.baseUrl}`,
     `session: ${name} (strategy ${c.sessionStrategy}; cwd ${cwd})`,
-    `dashboard: ${sessionUrl(c.workspace, name)}`,
+    ...(dashboard ? [`dashboard: ${dashboard}`] : []),
     `capture: ${c.capture?.saveMessages ? `on${c.capture?.saveToolUse ? " +tools" : ""}` : "off"} · ${pendingCount()} message(s) pending`,
     `injection: sessionStart [${c.injection?.sessionStart?.join(", ")}] · perTurn [${c.injection?.perTurn?.join(", ") || "none"}]`,
     `last memory fetch: ${ago(status.lastFetchAt)}${status.lastFetchError ? ` — error: ${status.lastFetchError}` : ""}`,
