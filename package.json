@@ -1,0 +1,12 @@
+{
+  "name": "pi-honcho",
+  "version": "0.1.0",
+  "description": "Honcho persistent memory for Pi — Hermes/dsh/zcode-honcho-aligned: capture every turn, inject with TTL refresh + dialectic cadence, plus honcho_search/honcho_chat/honcho_remember/honcho_status/honcho_flush tools and /honcho.",
+  "keywords": ["pi-package"],
+  "license": "MIT",
+  "type": "module",
+  "pi": {
+    "extensions": ["./index.mjs"],
+    "skills": ["./skills"]
+  }
+}
