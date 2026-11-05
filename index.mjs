@@ -132,7 +132,7 @@ function text(result) {
 function statusText(c, cwd = process.cwd()) {
   const name = new Gateway(c).currentSessionName(cwd);
   const status = readStatus();
-  const dashboard = sessionUrl(c.workspace, name, c.baseUrl);
+  const dashboard = sessionUrl(c.workspace, name, c.guiBase);
   const lines = [
     `pi-honcho ${PLUGIN_VERSION}`,
     `enabled: ${c.enabled ? "yes" : "no (config.enabled)"}`,
